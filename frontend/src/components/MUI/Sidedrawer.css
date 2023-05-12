@@ -1,0 +1,28 @@
+.searchfunctonality .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border: none ;
+}
+.side-btn.css-1w1rijm-MuiButtonBase-root-MuiButton-root{
+    padding: 8px;
+}
+.searchfunctonality .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 8px 10px;
+}
+.title.css-o2w69a-MuiTypography-root{
+    font-size: 2.5rem;
+}
+.searchfunctonality .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    width: 100%;
+    max-width: 120px;
+}
+.chat-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    margin: 8px 10px;
+    border-radius: 20px;
+}
+.menu-btn{
+    display: flex;
+}

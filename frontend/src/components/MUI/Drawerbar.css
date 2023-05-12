@@ -1,0 +1,7 @@
+.main-drawer .search-user{
+    display: flex;
+    column-gap: 15px;
+}
+.main-drawer{
+    padding: 15px 20px;
+}

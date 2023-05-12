@@ -1,0 +1,21 @@
+.tab-wrap.css-1izfg5m{
+    margin: 0 auto;
+    background-color: #f2f2f2;
+}
+.tab-wrap .css-hip9hq-MuiPaper-root-MuiAppBar-root{
+    background-color: aliceblue;
+    color: #000;
+    border-radius: 50px;
+}
+.tab-wrap .css-1vw5i9y-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    background-color: #484eaa;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+}
+.tab-wrap .css-11yukd5-MuiTabs-indicator{
+    display: none;
+}
+/* .tab-wrap .MuiBox-root.css-19kzrtu{
+    padding: 0;
+} */

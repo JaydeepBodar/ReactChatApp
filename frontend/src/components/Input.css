@@ -1,0 +1,21 @@
+.form-wrapper .form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7px;
+}
+.new-form-group {
+    width: 100%;
+}
+.new-form-group .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input,.form-group .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 8px 15px;
+}
+.form-group .label{
+    position: relative;
+    margin:0 0 10px;
+}
+.form-group .label::after{
+    content: "*";
+    position: absolute;
+    color: red;
+    margin-right: 2px;
+}

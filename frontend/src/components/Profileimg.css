@@ -1,0 +1,15 @@
+.mui-modal{
+    border-radius: 20px;
+    position: relative;
+}
+.mui-modal .profile-img{
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+}
+.mui-modal .close-icon{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}

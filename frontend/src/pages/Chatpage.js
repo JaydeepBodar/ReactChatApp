@@ -25,8 +25,8 @@ const Chatpage = () => {
         )} */}
         <Sidedrwer />
         <Box className="chat-wrapper">
-          <Mychats />
-          <Chatbox />
+          {user && <Mychats />}
+          {user && <Chatbox />}
         </Box>
       </Box>
     </React.Fragment>

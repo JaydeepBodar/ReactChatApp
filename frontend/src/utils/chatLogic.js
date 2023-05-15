@@ -2,9 +2,9 @@ import Usercomponent from "../components/Usercomponent";
 
 export const getSender = (loggeduser, users) => {
   return users[0]._id === loggeduser._id ? (
-    <Usercomponent users={users} />
+    <Usercomponent users={users[1]} />
   ) : (
-    users[0].name
+    <Usercomponent users={users[0]} />
   );
 };
 export const isSamesender = (message, currentmessage, currentIndex, userID) => {
@@ -33,17 +33,17 @@ export const isSamesendermargin = (
     message[currentIndex + 1].sender._id === currentmessage.sender._id &&
     message[currentIndex].sender._id !== userID
   ) {
-    return 33;
+    return "left";
   } else if (
     (currentIndex < message.length - 1 &&
-      message[currentIndex + 1].sender._id !== currentmessage.sender._id &&
+      message[currentIndex + 1].sender._id !== currentmessage.sender._id  &&
       message[currentIndex].sender._id !== userID) ||
     (currentIndex === message.length - 1 &&
       message[currentIndex].sender._id !== userID)
   ) {
-    return 0;
+    return "0px";
   } else {
-    return "auto";
+    return "right";
   }
 };
 export const isSameuser=(message, currentIndex,currentmessage )=>{

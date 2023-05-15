@@ -14,8 +14,14 @@ import Scrollchat from "./Scrollchat";
 const Endpoint="http://localhost:5050"
 var socket,singlechatconnect;
 const Singlechat = () => {
-  const { user, setSelectedstate, Selectedstate, fetchagain, setFetchagain } =
-    Globalcontext();
+  const { user, setSelectedstate, Selectedstate, fetchagain, setFetchagain,logged, setlogged } =
+  Globalcontext();
+  console.log("selectedchat",Selectedstate)
+    useEffect(()=>{
+      socket=io(Endpoint)
+      socket.emit("setup",user)
+      socket.on("data",()=>setsocketConnect(true))
+    },[user])
   const [message, setmessage] = useState([]);
   const[socketConnect,setsocketConnect]=useState(false)
   const [newMessage, setnewMessage] = useState();
@@ -48,7 +54,7 @@ const Singlechat = () => {
           { content: newMessage, chatId: Selectedstate._id },
           config
         )
-        .then((res) => setmessage([...message, res.data]))
+        .then((res) => setmessage([...message, res.data],socket.emit("message",res.data)))
         .catch((e) => console.log("err", e))
         .finally(() => setnewMessage(""));
     }
@@ -60,15 +66,19 @@ const Singlechat = () => {
     padding: "15px 25px 0",
     flex: "0 0 70%",
   };
-  useEffect(()=>{
-    socket=io(Endpoint)
-    socket.emit("setup",user)
-    socket.on("setup",()=>setsocketConnect(true))
-  },[])
   useEffect(() => {
     fetchallMessage()
     singlechatconnect=Selectedstate
   }, [Selectedstate]);
+  useEffect(()=>{
+    socket.on("message",(newMessage)=>{
+      if(!singlechatconnect || singlechatconnect._id !== newMessage.chat._id){
+        // print notification
+      }else{
+        setmessage([...message,newMessage])
+      }
+    })
+  })
   return (
     <Box>
       {Selectedstate ? (
@@ -87,7 +97,6 @@ const Singlechat = () => {
             </Box>
           ) : (
             <React.Fragment>
-              <Box></Box>
               <Box sx={style}>
                 <Typography variant="h4">
                   {Selectedstate.chatName.toUpperCase()}

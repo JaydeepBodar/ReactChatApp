@@ -114,7 +114,6 @@ const Signup = (props) => {
         .post(
           `${userAuthapi}/register`,
           { ...input, pic },
-          { withCredentials: true },
           config
         )
         .then((resolve) => {
@@ -125,7 +124,6 @@ const Signup = (props) => {
             toast.success("Registration Successful");
             navigate("/chat");
           }
-          console.log("object",resolve.data)
         })
         .catch((e) => toast.error(e.response.data.message));
       setPicLoading(false);

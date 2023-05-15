@@ -17,8 +17,8 @@ const accesschat = async (req, res) => {
       .find({
         isGroupchat: false,
         $and: [
-          { users: { $elemMatch: { $eq: req.user._id } } },
           { users: { $elemMatch: { $eq: userId } } },
+          { users: { $elemMatch: { $eq: req.user._id } } },
         ],
       })
       .populate("users")

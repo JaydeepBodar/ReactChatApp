@@ -2,7 +2,7 @@ import { FormLabel, TextField, Box } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "./Input.css";
-const Input = ({ label, type, onChange, name, value, onBlur, className,placeholder }) => {
+const Input = ({ label, type, onChange, name, value, onBlur, className,placeholder,onKeyDown }) => {
   const location = useLocation();
   return (
     <React.Fragment>
@@ -14,6 +14,7 @@ const Input = ({ label, type, onChange, name, value, onBlur, className,placehold
       >
         <FormLabel className="label">{label}</FormLabel>
         <TextField
+          onKeyDown={onKeyDown}
           type={type}
           onChange={onChange}
           name={name}

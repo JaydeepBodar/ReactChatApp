@@ -23,9 +23,9 @@ const Drawerbar = ({
   };
   const accessChat = (userId) => {
     axios
-      .post(`${chatApi}`, {userId}, config)
+      .post(`${chatApi}`, { userId }, config)
       .then((res) => {
-        console.log("res",res)
+        console.log("res", res);
         if (
           (!Chat.find((chat) => chat._id === res.data._id),
           setChat([res.data, ...Chat]))
@@ -62,7 +62,7 @@ const Drawerbar = ({
             })}
         </Box>
       </Drawer>
-      <Toascontainer/>
+      <Toascontainer />
     </Box>
   );
 };

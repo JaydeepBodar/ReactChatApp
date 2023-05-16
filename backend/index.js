@@ -53,6 +53,7 @@ io.on("connection", (socket) => {
         if (user.id === newmessage.sender._id) {
           return;
         }else{
+          console.log("userid",user._id)
           socket.in(user._id).emit("message recieved",newmessage)
         }
       });

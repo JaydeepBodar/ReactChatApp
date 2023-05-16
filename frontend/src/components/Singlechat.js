@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Globalcontext } from "../store/context";
 import { Box, Typography } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -9,21 +9,28 @@ import Input from "./Input";
 import "./common.css";
 import axios from "axios";
 import { messageApi } from "../utils/config";
-import io from "socket.io-client"
+import io from "socket.io-client";
 import Scrollchat from "./Scrollchat";
-const Endpoint="http://localhost:5050"
-var socket,singlechatconnect;
+const Endpoint = "http://localhost:5050";
+var socket, singlechatconnect;
 const Singlechat = () => {
-  const { user, setSelectedstate, Selectedstate, fetchagain, setFetchagain,logged, setlogged } =
-  Globalcontext();
-  console.log("selectedchat",Selectedstate)
-    useEffect(()=>{
-      socket=io(Endpoint)
-      socket.emit("setup",user)
-      socket.on("data",()=>setsocketConnect(true))
-    },[user])
+  const {
+    user,
+    setSelectedstate,
+    Selectedstate,
+    fetchagain,
+    setFetchagain,
+    logged,
+    setlogged,
+  } = Globalcontext();
+  console.log("selectedchat", Selectedstate);
+  useEffect(() => {
+    socket = io(Endpoint);
+    socket.emit("setup", user);
+    socket.on("data", () => setsocketConnect(true));
+  }, [user]);
   const [message, setmessage] = useState([]);
-  const[socketConnect,setsocketConnect]=useState(false)
+  const [socketConnect, setsocketConnect] = useState(false);
   const [newMessage, setnewMessage] = useState();
   const fetchallMessage = () => {
     if (!Selectedstate) {
@@ -34,7 +41,7 @@ const Singlechat = () => {
         .get(`${messageApi}/${Selectedstate._id}`, config)
         .then((res) => setmessage(res.data))
         .catch((e) => console.log("err", e));
-        socket.emit("join chat",Selectedstate._id)
+      socket.emit("join chat", Selectedstate._id);
     }
   };
   const Typinghandler = (e) => {
@@ -54,7 +61,9 @@ const Singlechat = () => {
           { content: newMessage, chatId: Selectedstate._id },
           config
         )
-        .then((res) => setmessage([...message, res.data],socket.emit("message",res.data)))
+        .then((res) =>
+          setmessage([...message, res.data], socket.emit("message", res.data))
+        )
         .catch((e) => console.log("err", e))
         .finally(() => setnewMessage(""));
     }
@@ -67,18 +76,18 @@ const Singlechat = () => {
     flex: "0 0 70%",
   };
   useEffect(() => {
-    fetchallMessage()
-    singlechatconnect=Selectedstate
+    fetchallMessage();
+    singlechatconnect = Selectedstate;
   }, [Selectedstate]);
-  useEffect(()=>{
-    socket.on("message",(newMessage)=>{
-      if(!singlechatconnect || singlechatconnect._id !== newMessage.chat._id){
+  useEffect(() => {
+    socket.on("message", (newMessage) => {
+      if (!singlechatconnect || singlechatconnect._id !== newMessage.chat._id) {
         // print notification
-      }else{
-        setmessage([...message,newMessage])
+      } else {
+        setmessage([...message, newMessage]);
       }
-    })
-  })
+    });
+  });
   return (
     <Box>
       {Selectedstate ? (
@@ -89,7 +98,7 @@ const Singlechat = () => {
                 {Selectedstate.users[1].name}
               </Typography>
               <Profileimage
-                button={<RemoveRedEyeIcon color="action" />}
+                button={<RemoveRedEyeIcon color="action"/>}
                 name={Selectedstate.users[1].name}
                 email={Selectedstate.users[1].email}
                 avtar={Selectedstate.users[1].pic}
@@ -105,7 +114,7 @@ const Singlechat = () => {
               </Box>
             </React.Fragment>
           )}
-          <Scrollchat message={message}/>
+          <Scrollchat message={message} />
           <Box
             sx={{
               display: "flex",
@@ -140,5 +149,4 @@ const Singlechat = () => {
     </Box>
   );
 };
-
 export default Singlechat;

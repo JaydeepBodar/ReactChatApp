@@ -34,7 +34,7 @@ const accesschat = async (req, res) => {
       let chatData = {
         chatName: "sender",
         isGroupchat: false,
-        users: [req.user._id, userId],
+        users: [userId,req.user._id],
       };
       console.log("chatdata", chatData);
       try {

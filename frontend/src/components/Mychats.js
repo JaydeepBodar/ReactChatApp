@@ -21,15 +21,12 @@ const Mychats = () => {
     axios
       .get(`${chatApi}`, config)
       .then((response) => setChat(response.data))
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e)); 
   };
   useEffect(() => {
     setlogged(JSON.parse(localStorage.getItem("userInfo")));
     fetchchat();
   }, [user,fetchagain]);
-  Chat.map((Chat) => {
-    console.log("chat", Chat);
-  });
   return (
     <Box className="newchat">
         <Box className="chatheader">
@@ -50,13 +47,13 @@ const Mychats = () => {
               }}
             >
               <Typography variant="body1">
-                {!chat.isGroupchat ? getSender(logged,chat.users) : <Usergroupcomponent users={chat}/>}
+                {!chat.isGroupchat ? user && getSender(logged,chat.users) : <Usergroupcomponent users={chat}/>}
               </Typography>
             </Box>
           );
         })}
     </Box>
-  );
+  ); 
 };
 
 export default Mychats;

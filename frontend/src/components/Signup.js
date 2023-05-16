@@ -16,66 +16,7 @@ import { useNavigate } from "react-router-dom";
 const Signup = (props) => {
   const [passwordType, setPasswordType] = useState("password");
   const navigate = useNavigate();
-  // const {
-  //   values,
-  //   handleBlur,
-  //   handleChange,
-  //   handleSubmit,
-  //   touched,
-  //   errors,
-  //   setFieldValue,
-  // } = useFormik({
-  //   initialValues: {
-  //     name: "",
-  //     email: "",
-  //     password: "",
-  //     conformpassword: "",
-  //     image: "",
-  //   },
-  //   validationSchema: Yup.object().shape({
-  //     name: Yup.string()
-  //       .min(2, "Too Short!")
-  //       .max(20, "Too Long!")
-  //       .required("Name must be required"),
-  //     email: Yup.string()
-  //       .email("Invalid email")
-  //       .required("Email must be Required"),
-  //     password: Yup.string().min(8).required("password must required"),
-  //     conformpassword: Yup.string()
-  //       .oneOf([Yup.ref("password"), null], 'Must match "password" field value')
-  //       .required("conform password must be required"),
-  //     image: Yup.mixed()
-  //       .required("image must required")
-  //       .test(
-  //         "FILE_SIZE",
-  //         "Uploaded file is too big.",
-  //         (value) => value && value.size < 1024 * 1024 * 1024
-  //       )
-  //       .test(
-  //         "FILE_FORMAT",
-  //         "Uploaded file has unsupported format.",
-  //         (value) =>
-  //           value &&
-  //           [
-  //             "image/jpg",
-  //             "image/gif",
-  //             "image/png",
-  //             "image/jpeg",
-  //             "image/svg",
-  //             "image/webp",
-  //           ].includes(value.type)
-  //       ),
-  //   }),
-  //   onSubmit: (value, actions) => {
-  //     axios
-  //       .post(`${userAuthapi}/register`, value,{withCredentials:true})
-  //       .then((res) => console.log(res), navigate("/chat"))
-  //       // .catch((e) => toast.error(e.response.data.message));
-  //       const data=localStorage.setItem("userInfo",JSON.stringify(value))
-  //       console.log("data",data)
-  //     actions.resetForm();
-  //   },
-  // });
+
   const [input, setinput] = useState({
     name: "",
     email: "",

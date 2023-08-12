@@ -57,7 +57,7 @@ const Drawerbar = ({
                   userId={user._id}
                   user={user}
                   handleFunction={() => accessChat(user._id)}
-                />
+                />  
               );
             })}
         </Box>

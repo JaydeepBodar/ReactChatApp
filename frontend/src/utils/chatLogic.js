@@ -33,7 +33,7 @@ export const isSamesendermargin = (
     message[currentIndex + 1].sender._id === currentmessage.sender._id &&
     message[currentIndex].sender._id !== userID
   ) {
-    return "left";
+    return "flex-start";
   } else if (
     (currentIndex < message.length - 1 &&
       message[currentIndex + 1].sender._id !== currentmessage.sender._id  &&
@@ -41,9 +41,9 @@ export const isSamesendermargin = (
     (currentIndex === message.length - 1 &&
       message[currentIndex].sender._id !== userID)
   ) {
-    return "0px";
+    return "flex-start";
   } else {
-    return "right";
+    return "flex-end";
   }
 };
 export const isSameuser=(message, currentIndex,currentmessage )=>{

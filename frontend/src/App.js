@@ -11,8 +11,7 @@ function App() {
   ]);
   return (
     <RouterProvider router={router}>
-      <ChatProvider></ChatProvider>
-    </RouterProvider>
+      </RouterProvider>
   );
 }
 

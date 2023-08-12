@@ -5,8 +5,8 @@ import { Globalcontext } from '../store/context'
 const Usercomponent = ({users}) => {
   return (
     <Box className="anotheruser">
-        <Avatar src={users.pic}/>
-        <Typography variant='h6'>{users.name}</Typography>
+        <Avatar src={users?.pic}/>
+        <Typography variant='h6'>{users?.name}</Typography>
     </Box>
   )
 }

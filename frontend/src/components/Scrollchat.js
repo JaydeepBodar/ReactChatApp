@@ -1,4 +1,4 @@
-import { Avatar, Tooltip } from "@mui/material";
+import { Avatar, Tooltip,Box } from "@mui/material";
 import React from "react";
 import ScrollableFeed from "react-scrollable-feed";
 import {
@@ -20,23 +20,38 @@ const Scrollchat = ({ message }) => {
             <React.Fragment>
               <div key={index}>
                 {isSamesender(message, val, index, user._id) &&
-                  (isLastmessage(message, index, user._id) && (
+                  isLastmessage(message, index, user._id) && (
                     <Tooltip title={val.sender.name}>
                       <Avatar name={val.sender.name} src={val.sender.pic} />
                     </Tooltip>
-                  ))}
+                  )}
               </div>
-              <span
+              <p
                 style={{
-                  backgroundColor:
-                    val.sender._id === user._id ? "red" : "green",
-                  color: "#fff",
-                  marginLeft: isSamesendermargin(message, val, index, user._id),
+                  display: "flex",
+                  justifyContent: isSamesendermargin(
+                    message,
+                    val,
+                    index,
+                    user._id
+                  ),
+                  padding:"0 10px",
                   marginTop: isSameuser(message, val, index) ? 3 : 10,
+                  marginBottom:"0"
                 }}
               >
-                {val.content}
-              </span>
+                <span
+                  style={{
+                    backgroundColor:
+                      val.sender._id === user._id ? "red" : "green",
+                    color: "#fff",
+                    padding:"3px 8px",
+                    borderRadius:"20px"
+                  }}
+                >
+                  {val.content}
+                </span>
+              </p>
             </React.Fragment>
           );
         })}

@@ -31,7 +31,7 @@ mongoose
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
-  cors: { credentials: true, origin: "http://localhost:3000" },
+  cors: { credentials: true, origin: "http://localhost:3001" },
 });
 io.on("connection", (socket) => {
   console.log("socket connect successfully");

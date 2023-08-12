@@ -47,7 +47,7 @@ const Mychats = () => {
               }}
             >
               <Typography variant="body1">
-                {!chat.isGroupchat ? user && getSender(logged,chat.users) : <Usergroupcomponent users={chat}/>}
+                {!chat.isGroupchat ? logged && getSender(logged,chat.users) : <Usergroupcomponent users={chat}/>}
               </Typography>
             </Box>
           );

@@ -60,7 +60,7 @@ const Sidedrwer = () => {
         <Button variant="ghost" className="side-btn" onClick={Openbar}>
           <SearchIcon />
           <Typography variant="body1" className="searchfunctonality">
-            Search user...
+            Search user... 
           </Typography>
         </Button>
       </Tooltip>

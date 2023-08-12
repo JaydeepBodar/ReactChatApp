@@ -11,17 +11,13 @@ import axios from "axios";
 import { messageApi } from "../utils/config";
 import io from "socket.io-client";
 import Scrollchat from "./Scrollchat";
-const Endpoint = "http://localhost:5050";
+const Endpoint = "http://localhost:5000";
 var socket, singlechatconnect;
 const Singlechat = () => {
   const {
     user,
-    setSelectedstate,
     Selectedstate,
-    fetchagain,
-    setFetchagain,
-    logged,
-    setlogged,
+
   } = Globalcontext();
   console.log("selectedchat", Selectedstate);
   useEffect(() => {
@@ -76,13 +72,14 @@ const Singlechat = () => {
     flex: "0 0 70%",
   };
   useEffect(() => {
+    console.log("chatatatatatatata")
     fetchallMessage();
     singlechatconnect = Selectedstate;
-  }, [Selectedstate]);
+  });
   useEffect(() => {
     socket.on("message", (newMessage) => {
       if (!singlechatconnect || singlechatconnect._id !== newMessage.chat._id) {
-        // print notification
+        // print notification 
       } else {
         setmessage([...message, newMessage]);
       }
@@ -95,13 +92,13 @@ const Singlechat = () => {
           {!Selectedstate.isGroupchat ? (
             <Box sx={style}>
               <Typography variant="h4">
-                {Selectedstate.users[1].name}
+                {Selectedstate.users[0].name}
               </Typography>
               <Profileimage
                 button={<RemoveRedEyeIcon color="action"/>}
-                name={Selectedstate.users[1].name}
-                email={Selectedstate.users[1].email}
-                avtar={Selectedstate.users[1].pic}
+                name={Selectedstate.users[0].name}
+                email={Selectedstate.users[0].email}
+                avtar={Selectedstate.users[0].pic}
               />
             </Box>
           ) : (
@@ -112,24 +109,25 @@ const Singlechat = () => {
                 </Typography>
                 <Updategroupchat fetchallMessage={fetchallMessage} />
               </Box>
-            </React.Fragment>
+            </React.Fragment>   
           )}
-          <Scrollchat message={message} />
-          <Box
+          <Box 
             sx={{
               display: "flex",
               height: "80vh",
-              alignItems: "flex-end",
+              flexDirection:"column",
+              justifyContent: "flex-end",
               width: "100%",
             }}
             onKeyDown={sendMessage}
           >
+          <Scrollchat message={message} />
             <Input
               placeholder="Enter Your Message..."
               className="data"
               value={newMessage}
               onChange={Typinghandler}
-            />
+            />  
           </Box>
         </React.Fragment>
       ) : (
